@@ -20,8 +20,6 @@ jobs:
           dbt_project_folder: "dbt_project"
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
-          SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
-          SENDGRID_TO: ${{ secrets.SENDGRID_TO }}
       - name: Get the result
         run: echo "${{ steps.dbt-run.outputs.result }}"
         shell: bash
@@ -30,3 +28,5 @@ jobs:
         uses: peter-evans/sendgrid-action@v1
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
+          SENDGRID_TO: ${{ secrets.SENDGRID_TO }}

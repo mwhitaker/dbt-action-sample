@@ -24,13 +24,13 @@ jobs:
           dbt_project_folder: "dbt_project"
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
-          SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
-          SENDGRID_TO: ${{ secrets.SENDGRID_TO }}
 
       - name: SendGrid
         uses: peter-evans/sendgrid-action@v1
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
+          SENDGRID_TO: ${{ secrets.SENDGRID_TO }}
 ```
 
 The SendGrid Action uses a node.js file for configuration. Here is one example that lets you know whether the run has failed or passed and sends the dbt console output in the body of the email.
