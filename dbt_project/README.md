@@ -6,7 +6,7 @@ Try running the following commands:
 - dbt run
 - dbt test
 - dbt debug
-- dbt is very very cool
+- dbt is very cool
 
 
 ### Resources:
