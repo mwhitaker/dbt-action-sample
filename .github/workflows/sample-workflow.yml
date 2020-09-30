@@ -14,7 +14,7 @@ jobs:
 
       - name: dbt-run
         id: dbt-run
-        uses: mwhitaker/dbt-action@fishtown-v0.18
+        uses: mwhitaker/dbt-action@master
         with:
           dbt_command: "dbt run --profiles-dir ."
           dbt_project_folder: "dbt_project"
