@@ -3,9 +3,7 @@ name: Docker Actions
 on:
   push:
     branches:
-      - master
-  schedule:
-    - cron:  '0 8 * * *'
+      - dev
 
 jobs:
   action:
@@ -18,13 +16,19 @@ jobs:
         id: dbt-run
         uses: mwhitaker/dbt-action@master
         with:
-          dbt_command: "dbt run --profiles-dir ."
+          dbt_command: "dbt docs generate --profiles-dir ."
           dbt_project_folder: "dbt_project"
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
       - name: Get the result
         run: echo "${{ steps.dbt-run.outputs.result }}"
         shell: bash
+      - id: upload-file
+        uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+        with:
+          credentials: ${{ secrets.DBT_BIGQUERY_TOKEN }}
+          path: /target
+          destination: analytics-buddy-dbt-docs
 
       - name: SendGrid
         uses: peter-evans/sendgrid-action@v1
