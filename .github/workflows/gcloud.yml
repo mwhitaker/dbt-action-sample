@@ -14,21 +14,21 @@ jobs:
 
       - name: dbt-run
         id: dbt-run
-        uses: mwhitaker/dbt-action@master
+        uses: mwhitaker/dbt-action@fix-set-env
         with:
           dbt_command: "dbt docs generate --profiles-dir ."
           dbt_project_folder: "dbt_project"
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
       - name: Get the result
-        run: ls -a
+        run: echo $GITHUB_ENV
         shell: bash
-      - id: upload-file
-        uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
-        with:
-          credentials: ${{ secrets.DBT_BIGQUERY_TOKEN }}
-          path: dbt_project/target
-          destination: analytics-buddy-internal-docs
+    #   - id: upload-file
+    #     uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+    #     with:
+    #       credentials: ${{ secrets.DBT_BIGQUERY_TOKEN }}
+    #       path: dbt_project/target
+    #       destination: analytics-buddy-internal-docs
 
       - name: SendGrid
         uses: peter-evans/sendgrid-action@v1
