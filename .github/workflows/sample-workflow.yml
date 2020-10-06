@@ -16,7 +16,7 @@ jobs:
 
       - name: dbt-run
         id: dbt-run
-        uses: mwhitaker/dbt-action@master
+        uses: mwhitaker/dbt-action@fix-set-env
         with:
           dbt_command: "dbt run --profiles-dir ."
           dbt_project_folder: "dbt_project"
