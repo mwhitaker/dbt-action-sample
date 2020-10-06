@@ -21,14 +21,14 @@ jobs:
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
       - name: Get the result
-        run: echo $GITHUB_ENV
+        run: echo $DBT_RUN_STATE
         shell: bash
-    #   - id: upload-file
-    #     uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
-    #     with:
-    #       credentials: ${{ secrets.DBT_BIGQUERY_TOKEN }}
-    #       path: dbt_project/target
-    #       destination: analytics-buddy-internal-docs
+      - id: upload-file
+        uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+        with:
+          credentials: ${{ secrets.DBT_BIGQUERY_TOKEN }}
+          path: dbt_project/dbt_console_output.txt
+          destination: analytics-buddy-internal-docs
 
       - name: SendGrid
         uses: peter-evans/sendgrid-action@v1
