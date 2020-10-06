@@ -27,8 +27,8 @@ jobs:
         uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
         with:
           credentials: ${{ secrets.DBT_BIGQUERY_TOKEN }}
-          path: /target
-          destination: analytics-buddy-dbt-docs
+          path: ./target
+          destination: analytics-buddy-internal-docs
 
       - name: SendGrid
         uses: peter-evans/sendgrid-action@v1
