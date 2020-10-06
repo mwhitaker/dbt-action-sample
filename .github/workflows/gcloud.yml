@@ -21,7 +21,7 @@ jobs:
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
       - name: Get the result
-        run: echo "${{ steps.dbt-run.outputs.result }}"
+        run: ls -a
         shell: bash
       - id: upload-file
         uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
