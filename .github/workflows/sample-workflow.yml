@@ -1,9 +1,8 @@
 name: Docker Actions
 
 on:
+  workflow_dispatch:
   push:
-  schedule:
-    - cron:  '0 8 * * *'
 
 jobs:
   action:
@@ -14,7 +13,7 @@ jobs:
 
       - name: dbt-run
         id: dbt-run
-        uses: mwhitaker/dbt-action@v0.1.0
+        uses: mwhitaker/dbt-action@v0.1.3
         with:
           dbt_command: "dbt run --profiles-dir ."
           dbt_project_folder: "dbt_project"
