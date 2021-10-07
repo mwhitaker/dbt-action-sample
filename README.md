@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v0.1.0
 
       - name: dbt-run
-        uses: mwhitaker/dbt-action@main
+        uses: mwhitaker/dbt-action@master
         with:
           dbt_command: "dbt run --profiles-dir ."
           dbt_project_folder: "dbt_project"
