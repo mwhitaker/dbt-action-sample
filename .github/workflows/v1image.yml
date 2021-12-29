@@ -1,0 +1,32 @@
+
+name: Docker Actions v1
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: dbt-run
+        id: dbt-run
+        uses: mwhitaker/dbt-action@fishtown-v1.0
+        with:
+          dbt_command: "dbt run --profiles-dir ."
+          dbt_project_folder: "dbt_project"
+        env:
+          DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
+      - name: Get the result
+        run: echo "${{ steps.dbt-run.outputs.result }}"
+        shell: bash
+
+      - name: SendGrid
+        uses: peter-evans/sendgrid-action@v1
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          SENDGRID_FROM: ${{ secrets.SENDGRID_FROM }}
+          SENDGRID_TO: ${{ secrets.SENDGRID_TO }}
