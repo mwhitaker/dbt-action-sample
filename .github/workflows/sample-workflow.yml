@@ -12,9 +12,9 @@ jobs:
 
       - name: dbt-run
         id: dbt-run
-        uses: mwhitaker/dbt-action@master
+        uses: mwhitaker/dbt-action@dev
         with:
-          dbt_command: "dbt run --profiles-dir ."
+          dbt_command: "dbt run"
           dbt_project_folder: "dbt_project"
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
