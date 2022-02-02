@@ -1,7 +1,10 @@
-name: Docker Actions
+name: set env for profile
 
 on:
   workflow_dispatch:
+
+env:
+  DBT_PROFILES_DIR: .
 
 jobs:
   action:
