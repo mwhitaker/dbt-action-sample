@@ -17,12 +17,12 @@ jobs:
       - name: dbt-deps
         uses: mwhitaker/dbt-action@fishtown-v0.19.1
         with:
-          dbt_command: "dbt deps --profiles-dir ."
+          dbt_command: "dbt deps"
           dbt_project_folder: "dbt_project"
       - name: dbt-run
         uses: mwhitaker/dbt-action@fishtown-v0.19.1
         with:
-          dbt_command: "dbt run --profiles-dir ."
+          dbt_command: "dbt run"
           dbt_project_folder: "dbt_project"
       - name: dbt-test
         uses: mwhitaker/dbt-action@fishtown-v0.19.1
