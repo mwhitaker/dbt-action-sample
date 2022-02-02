@@ -5,6 +5,7 @@ on:
 
 env:
   DBT_PROFILES_DIR: .
+  DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
 
 jobs:
   action:
@@ -19,8 +20,7 @@ jobs:
         with:
           dbt_command: "dbt run"
           dbt_project_folder: "dbt_project"
-        env:
-          DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
+          
       - name: Get the result
         run: echo "${{ steps.dbt-run.outputs.result }}"
         shell: bash
