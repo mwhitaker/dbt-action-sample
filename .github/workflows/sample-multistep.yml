@@ -27,7 +27,7 @@ jobs:
       - name: dbt-test
         uses: mwhitaker/dbt-action@fishtown-v0.19.1
         with:
-          dbt_command: "dbt test --profile-dir ."
+          dbt_command: "dbt test"
           dbt_project_folder: "dbt_project"
         env:
           DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
