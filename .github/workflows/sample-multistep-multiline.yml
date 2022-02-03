@@ -17,8 +17,5 @@ jobs:
       - name: dbt-deps
         uses: mwhitaker/dbt-action@fishtown-v0.19.1
         with:
-          dbt_command: |
-           "dbt deps"
-           "dbt run"
-           "dbt test"
+          dbt_command: "dbt deps && dbt run && dbt test"
           dbt_project_folder: "dbt_project"
