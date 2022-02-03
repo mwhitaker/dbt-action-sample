@@ -1,4 +1,4 @@
-name: Run dbt build and test on push
+name: Multiline
 
 on:
   workflow_dispatch:
