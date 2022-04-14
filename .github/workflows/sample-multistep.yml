@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: dbt-version
+        uses: mwhitaker/dbt-action@new_docker
+        with:
+          dbt_command: "dbt --version"
+          dbt_project_folder: "dbt_project"
       - name: dbt-deps
         uses: mwhitaker/dbt-action@new_docker
         with:
