@@ -12,25 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       - name: dbt-version
-        uses: mwhitaker/dbt-action
+        uses: mwhitaker/dbt-action@v1.0.4
         with:
           dbt_command: "dbt --version"
           dbt_project_folder: "dbt_project"
       - name: dbt-deps
-        uses: mwhitaker/dbt-action
+        uses: mwhitaker/dbt-action@v1.0.4
         with:
           dbt_command: "dbt deps"
           dbt_project_folder: "dbt_project"
       - name: dbt-run
-        uses: mwhitaker/dbt-action
+        uses: mwhitaker/dbt-action@v1.0.4
         with:
           dbt_command: "dbt run"
           dbt_project_folder: "dbt_project"
       - name: dbt-test
-        uses: mwhitaker/dbt-action
+        uses: mwhitaker/dbt-action@v1.0.4
         with:
           dbt_command: "dbt test"
           dbt_project_folder: "dbt_project"
