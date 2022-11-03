@@ -16,7 +16,7 @@ jobs:
 
       - name: dbt-run
         id: dbt-run
-        uses: mwhitaker/dbt-action@v1.2.1
+        uses: mwhitaker/dbt-action@dev1.3.0
         with:
           dbt_command: "dbt run"
           dbt_project_folder: "dbt_project"
