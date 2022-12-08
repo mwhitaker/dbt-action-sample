@@ -1,0 +1,24 @@
+name: Generate DBT Docs
+
+on:
+  workflow_dispatch:
+
+# env:
+#   DBT_PROFILES_DIR: .
+#   DBT_BIGQUERY_TOKEN: ${{ secrets.DBT_BIGQUERY_TOKEN }}
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: dbt-deps
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt docs generate --profiles-dir ../docs_hosting/"
+          dbt_project_folder: "dbt_project"
+        env:
+          DBT_USER: ${{ secrets.SF_USER }}
+          DBT_PASSWORD: ${{ secrets.SF_PWD }}
