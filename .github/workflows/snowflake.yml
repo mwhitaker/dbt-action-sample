@@ -17,8 +17,8 @@ jobs:
       - name: dbt-deps
         uses: mwhitaker/dbt-action@master
         with:
-          dbt_command: "dbt docs generate --profiles-dir ../docs_hosting/"
-          dbt_project_folder: "dbt_project"
+          dbt_command: "dbt docs generate --profiles-dir docs_hosting"
+          dbt_project_folder: "dbt_project/dbtlearn"
         env:
           DBT_USER: ${{ secrets.SF_USER }}
           DBT_PASSWORD: ${{ secrets.SF_PWD }}
