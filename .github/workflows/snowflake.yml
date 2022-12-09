@@ -17,7 +17,7 @@ jobs:
           ref: extrobe
 
       - name: dbt-deps
-        uses: mwhitaker/dbt-action@master
+        uses: mwhitaker/dbt-action@profdir
         with:
           dbt_command: "dbt docs generate"
           dbt_project_folder: "dbt_project/dbtlearn"
