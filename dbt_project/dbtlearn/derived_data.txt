@@ -1,0 +1,29 @@
+
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/profile
+
+my_new_project2:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: Fudged
+      pass: PassFudged
+      port: 5432
+      dbname: tutorial
+      schema: dbt_tutorial
+  target: dev
+
+my_new_project: # this needs to match the profile: in your dbt_project.yml file
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      keyfile: ./creds.json # replace this with the full path to your keyfile
+      project: analytics-buddy-internal # Replace this with your project id
+      dataset: temprun # Replace this with dbt_your_name, e.g. dbt_bob
+      threads: 1
+      timeout_seconds: 300
+      location: US
+      priority: interactive
